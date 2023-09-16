@@ -27,6 +27,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5%;
 }
 
 .uvodni-foto {
@@ -112,14 +113,14 @@ a {
 @media (min-width:640px) {
 
   .kontejner {
-    width: calc(100vh / 3);
+    width: calc(100vh / 2);
   }
 
   @media (min-width: 1000px) {
 
     .kontejner {
 
-      width: calc(100vh / 3);
+      width: calc(100vh / 2);
     }
 
   }
