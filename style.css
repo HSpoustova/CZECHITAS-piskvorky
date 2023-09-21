@@ -35,6 +35,7 @@ body {
 .uvodni-foto img {
   width: 100%;
   display: block;
+  border-radius: 5px 5px 0 0;
 }
 
 .obsah {
