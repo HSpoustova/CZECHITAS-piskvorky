@@ -104,6 +104,28 @@ h1 {
 
 }
 
+.mrizka__pole--kolecko {
+  background-image: url("img/circle2.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  animation-name: size;
+  animation-duration: 0.25s;
+
+
+
+}
+
+.mrizka__pole--krizek {
+  background-image: url("img/cross2.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  animation-name: size;
+  animation-duration: 0.10s;
+
+}
+
 .btn {
   cursor: pointer;
   border: 1px solid #283e50;
@@ -142,4 +164,15 @@ h1 {
 .btn__restart {
   background-color: #0197f6;
 
+}
+
+@keyframes size {
+
+  from {
+    background-size: 0%;
+  }
+
+  to {
+    background-size: 60%;
+  }
 }
