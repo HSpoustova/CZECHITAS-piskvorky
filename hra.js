@@ -1,3 +1,5 @@
+import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
+
 let hracNaTahu = 'circle';
 
 const oznacPolicko = (event) => {
@@ -12,18 +14,47 @@ const oznacPolicko = (event) => {
     hracNaTahu = 'circle';
     event.target.disabled = true;
   }
+
+  vyhodnot();
 };
 
-document.querySelector('.btn1').addEventListener('click', oznacPolicko);
-document.querySelector('.btn2').addEventListener('click', oznacPolicko);
-document.querySelector('.btn3').addEventListener('click', oznacPolicko);
-document.querySelector('.btn4').addEventListener('click', oznacPolicko);
-document.querySelector('.btn5').addEventListener('click', oznacPolicko);
-document.querySelector('.btn6').addEventListener('click', oznacPolicko);
-document.querySelector('.btn7').addEventListener('click', oznacPolicko);
-document.querySelector('.btn8').addEventListener('click', oznacPolicko);
-document.querySelector('.btn9').addEventListener('click', oznacPolicko);
-document.querySelector('.btn10').addEventListener('click', oznacPolicko);
+const vsechnaPolicka = document.querySelectorAll('.btn');
+vsechnaPolicka.forEach((policko) => {
+  policko.addEventListener('click', oznacPolicko);
+});
+
+const vyhodnot = () => {
+  let herniPole = [];
+  vsechnaPolicka.forEach((policko) => {
+    if (policko.classList.contains('mrizka__pole--kolecko')) {
+      herniPole.push('o');
+    } else if (policko.classList.contains('mrizka__pole--krizek')) {
+      herniPole.push('x');
+    } else {
+      herniPole.push('_');
+    }
+  });
+
+  const vitez = findWinner(herniPole);
+
+  if (vitez === 'o' || vitez === 'x') {
+    setTimeout(() => {
+      alert(`Vyhrál hráč se symbolem ${vitez}.`);
+    }, 1000);
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
+  }
+
+  if (vitez === 'tie') {
+    setTimeout(() => {
+      alert(`Hra skončila remizou.`);
+    }, 1000);
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
+  }
+};
 
 const zeptejSe = (event) => {
   const potvrzeni = confirm('Opravdu chceš začít znovu?');
